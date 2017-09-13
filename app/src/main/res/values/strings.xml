@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AudioBook Reviewzy</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="register">Register</string>
+    <string name="already_registered_click_here_to_log_in">Already Registered? Click here to log in</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+</resources>
