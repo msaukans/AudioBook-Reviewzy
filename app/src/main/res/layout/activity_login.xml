@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="gq.codester.maris.audiobookreviewzy.LoginActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/purple">
 
     <RelativeLayout
         android:id="@+id/lin1"
