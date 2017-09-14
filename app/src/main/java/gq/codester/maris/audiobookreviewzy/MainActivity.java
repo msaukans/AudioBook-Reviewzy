@@ -110,8 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View v){
         if(fab == v){
             {
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
 
         }
