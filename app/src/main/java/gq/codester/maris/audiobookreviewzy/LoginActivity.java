@@ -15,8 +15,9 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button loginBtn;
-    private EditText email,pass;
+    private EditText login,pass;
     private TextView tv1;
+    String p, log;
 
     private ProgressDialog bar;
 
@@ -24,12 +25,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+        checkUser();
+
 
         loginBtn = (Button) findViewById(R.id.loginBtn);
 
-        email = (EditText) findViewById(R.id.editTextEmail);
-        pass = (EditText) findViewById(R.id.editTextPass);
+        login = (EditText) findViewById(R.id.edLogin);
+        pass = (EditText) findViewById(R.id.edPass);
 
         tv1 = (TextView) findViewById(R.id.tv1);
 
@@ -54,16 +57,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void userLogin(){
-        String em = email.getText().toString().trim();
+        String log = login.getText().toString().trim();
         String p = pass.getText().toString().trim();
 
-        if(TextUtils.isEmpty(em)){
-            Toast.makeText(this,"Please enter email", Toast.LENGTH_SHORT);
+        if(TextUtils.isEmpty(log)){
+            Toast.makeText(this,"Please enter login", Toast.LENGTH_SHORT);
             return;
         }
 
         if(TextUtils.isEmpty(p)){
-            Toast.makeText(this,"Please enter email", Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Please enter password", Toast.LENGTH_SHORT);
             return;
         }
 
@@ -72,6 +75,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         bar.dismiss();
 
+
+
+    }
+
+    public void checkUser(){ //check if user's data is saved, if so just log them in and go to main activity
 
 
     }

@@ -1,16 +1,14 @@
 package gq.codester.maris.audiobookreviewzy;
 
-/**
- * Created by m on 15/09/17.
- */
+
 
 public class ABook {
 
-    String name;
-    String authName;
-    String desc;
-    String date_of_release;
-    String genre;
+    private String name;
+    private String authName;
+    private String desc;
+    private String date_of_release;
+    private String genre;
 
     //also might need: String file, link_to_book;
 

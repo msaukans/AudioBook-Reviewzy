@@ -1,18 +1,18 @@
 package gq.codester.maris.audiobookreviewzy;
 
-/**
- * Created by m on 15/09/17.
- */
 
 public class User {
 
-    String fname;
-    String sname;
-    String login;
-    String password;
-    String email;
-    String dob;
+    private String fname;
+    private String sname;
+    private String login;
+    private String password;
+    private String email;
+    private String dob;
 
+    public User(){
+
+    }
 
     public User(String fname, String sname, String login, String password, String email, String dob) {
         this.fname = fname;

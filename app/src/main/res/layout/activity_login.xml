@@ -33,24 +33,24 @@
             android:layout_below="@id/imgLogoLogin"/>
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/edLogin"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
+            android:hint="@string/login"
             android:layout_margin="15dp"
             android:layout_below="@id/tvLog"
             android:background="@drawable/rounded_ed"
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/editTextPass"
+            android:id="@+id/edPass"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:layout_margin="15dp"
-            android:layout_below="@id/editTextEmail"
+            android:layout_below="@id/edLogin"
             android:background="@drawable/rounded_ed"
             android:padding="10dp"/>
 
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:layout_margin="15dp"
-            android:layout_below="@id/editTextPass"
+            android:layout_below="@id/edPass"
             android:textAllCaps="false"/>
 
         <TextView

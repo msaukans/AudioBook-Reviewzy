@@ -67,7 +67,7 @@
 
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/edEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/edName"
@@ -79,10 +79,10 @@
             />
 
         <EditText
-            android:id="@+id/editTextPass"
+            android:id="@+id/edPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextEmail"
+            android:layout_below="@id/edEmail"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
             android:hint="@string/password"
@@ -91,37 +91,51 @@
             />
 
         <EditText
-            android:id="@+id/edDOB"
-            android:layout_width="match_parent"
+            android:id="@+id/edDOBD"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextPass"
+            android:layout_below="@id/edPass"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
-            android:hint="DOB"
+            android:hint="DD"
             android:inputType="date"
             android:padding="10dp"
             />
 
         <EditText
-            android:id="@+id/ed"
-            android:layout_width="match_parent"
+            android:id="@+id/edDOBM"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edDOB"
+            android:layout_below="@id/edPass"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
-            android:hint="@string/password"
-            android:inputType="text"
+            android:hint="MM"
+            android:inputType="date"
             android:padding="10dp"
+            android:layout_toRightOf="@id/edDOBD"
             />
 
+        <EditText
+            android:id="@+id/edDOBY"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edPass"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:hint="YYYY"
+            android:inputType="date"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/edDOBM"
+            />
 
         <Button
             android:id="@+id/registerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"
-            android:layout_margin="15dp"
-            android:layout_below="@id/ed"
+            android:layout_margin="10dp"
+            android:layout_below="@id/edDOBD"
+            android:layout_alignParentRight="true"
             android:textAllCaps="false"
             />
 
@@ -130,8 +144,9 @@
             android:text="@string/already_registered_click_here_to_log_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/registerBtn"
+            android:layout_below="@id/edDOBD"
             android:textColor="#ffffff"
+            android:paddingTop="15dp"
             />
 
     </RelativeLayout>

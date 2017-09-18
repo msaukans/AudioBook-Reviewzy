@@ -1,5 +1,6 @@
 package gq.codester.maris.audiobookreviewzy;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +23,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View.OnClickListener {
 
     FloatingActionButton fab;
-    TextView tv1;
+    TextView tvUsername1,tvUsername2;
+    EditText edSearch;
+    String username,username2;
+    ImageView profilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +45,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+
+        profilePic = (ImageView) headerView.findViewById(R.id.user_pic);
+        profilePic.setImageResource(R.mipmap.ic_add);
+
+        username = "marsis";
+        tvUsername1 = (TextView) headerView.findViewById(R.id.nav_username);
+        tvUsername1.setText(username);
+
+        username2 = "marsis@maris.uk";
+        tvUsername2 = (TextView) headerView.findViewById(R.id.nav_username2);
+        tvUsername2.setText(username2);
+
     }
 
     @Override
@@ -90,18 +112,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            //startActivity(this, .class);
-        } else if (id == R.id.nav_gallery) {
-
+        if (id == R.id.nav_profile) {
+            startActivity(new Intent(this, Profile.class));
+        } else if (id == R.id.nav_library) {
+            //startActivity(new Intent(this, Library.class));
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(this, Settings.class));
         }else if (id == R.id.log_out) {
-            // .clear() users login from the sharedpreference
+            // login.clear() users login from the sharedpreference
             startActivity(new Intent(this, LoginActivity.class));
         }
 
@@ -113,6 +135,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View v){
         if(fab == v){
             {
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setTitle("Search Box");
+                dialog.setContentView(R.layout.search_popup);
+
+                edSearch = (EditText) dialog.findViewById(R.id.search_in);
+
+                Button btn = (Button) dialog.findViewById(R.id.btn_search);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //what happens when clicked done
+                        String search = edSearch.getText().toString();
+                        //pass this to the background service which will get the search results
+                        //and send you over to the search results activity
+                        Toast.makeText(MainActivity.this,  "Search for: " + search, Toast.LENGTH_LONG).show();
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
 
             }
 
