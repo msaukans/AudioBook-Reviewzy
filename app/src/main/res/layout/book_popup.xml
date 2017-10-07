@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <EditText
+        android:id="@+id/ed_bname"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="name"/>
+
+    <EditText
+        android:id="@+id/ed_bauthor"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ed_bname"
+        android:hint="author name"/>
+
+    <EditText
+        android:id="@+id/ed_bDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="book's description"
+        android:layout_below="@id/ed_bauthor"/>
+
+    <EditText
+        android:id="@+id/ed_relD"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ed_bDesc"
+        android:hint="DD"
+        android:maxLength="2"/>
+
+    <EditText
+        android:id="@+id/ed_relM"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:hint="MM"
+        android:layout_toRightOf="@id/ed_relD"
+        android:layout_below="@id/ed_bDesc"
+        android:maxLength="2"/>
+
+    <EditText
+        android:id="@+id/ed_relY"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ed_relM"
+        android:layout_below="@id/ed_bDesc"
+        android:hint="YYYY"
+        android:maxLength="4"/>
+
+    <EditText
+        android:id="@+id/ed_genre"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="genre"
+        android:layout_below="@id/ed_relD"
+        />
+
+    <Button
+        android:id="@+id/btn_getBookDet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ed_genre"
+        android:text="submit"/>
+
+
+</RelativeLayout>

@@ -3,10 +3,12 @@ package gq.codester.maris.audiobookreviewzy;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Window;
+import android.widget.Toast;
+
 
 public class Settings extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
