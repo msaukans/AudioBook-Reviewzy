@@ -2,9 +2,12 @@ package gq.codester.maris.audiobookreviewzy;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.text.TextUtils;
@@ -37,8 +40,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FloatingActionButton fab;
     TextView tvUsername1,tvUsername2;
     EditText edSearch, ed_bname, ed_bauthor, ed_bDesc, ed_relD, ed_relM, ed_relY, ed_genre;
-    String username,username2, bName, bAuthor, bDesc, relD, relM, relY, bGenre,rel;
+    String login, pass, username, username2, bName, bAuthor, bDesc, relD, relM, relY, bGenre,rel;
     ImageView profilePic;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    SharedPreferences sp;
 
     ListView book_list;
 
@@ -95,12 +100,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
 
+
+        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String l =sp.getString("login",null);
+
+
         profilePic = (ImageView) headerView.findViewById(R.id.user_pic);
         profilePic.setImageResource(R.mipmap.ic_add);
 
         username = "marsis";
         tvUsername1 = (TextView) headerView.findViewById(R.id.nav_username);
-        tvUsername1.setText(username);
+        tvUsername1.setText(l);
 
         username2 = "marsis@maris.uk";
         tvUsername2 = (TextView) headerView.findViewById(R.id.nav_username2);
@@ -152,8 +162,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, Settings.class));
         }else if (id == R.id.log_out) {
-            // login.clear() users login from the sharedpreference
-            //pass.clear()
+            Toast.makeText(this, login + "  " + pass, Toast.LENGTH_SHORT).show();
+
+            SharedPreferences.Editor editor = sp.edit();
+            editor.remove("login");
+            editor.clear();
+            editor.commit();
+
             startActivity(new Intent(this, LoginActivity.class));
         }
 
@@ -161,6 +176,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
     public void onClick(View v){
         if(fab == v){

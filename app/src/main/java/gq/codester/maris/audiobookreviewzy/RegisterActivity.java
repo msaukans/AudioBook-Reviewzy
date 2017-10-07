@@ -1,6 +1,7 @@
 package gq.codester.maris.audiobookreviewzy;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -22,9 +23,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private Button registerBtn;
     private EditText edEmail,edPass, edLogin, edName, edName2, edDOBD, edDOBM, edDOBY;
-    String email,login, pass, fname, sname, dobd, dobm, doby,dob;
+    String email,login, pass, fname, sname, dobd, dobm, doby,dob , n1,n2,n3,n4,n5,n6;
     private TextView tv1;
     private ProgressDialog bar;
+    public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sp;
 
     private static final String REGISTER_URL = "http://codester.gq/book/register.php";
@@ -35,6 +37,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 
         bar = new ProgressDialog(this);
+
+        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         checkUser();
 
@@ -83,6 +87,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         dob = doby+"/"+dobm+"/"+dobd;
 
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("fname", fname);
+        editor.putString("sname", sname);
+        editor.putString("login", login);
+        editor.putString("email", email);
+        editor.putString("pass", pass);
+        editor.putString("dob", dob);
+        editor.commit();
+
+
+
         bar.setMessage("Registering user...");
         bar.show();
 
@@ -106,8 +121,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    private void register(String fname, String sname, String email, String login, String pass, String dob) {
-        String urlSuffix = "?sname="+fname+"&fname="+sname+"&email="+email+"&login="+login+"&password="+pass+"&dob="+dob;
+    private void register(final String fname, String sname, String email, String login, String pass, String dob) {
+        String urlSuffix = "?fname="+fname+"&sname="+sname+"&email="+email+"&login="+login+"&password="+pass+"&dob="+dob;
         class RegisterUser extends AsyncTask<String, Void, String> {
 
             //ProgressDialog loading;
@@ -128,16 +143,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 String succ ="successfully registered";
 
                 if(s.equals(succ)){
-                    SharedPreferences.Editor editor = sp.edit();
-                    //editor.putString("login", login);
-                    //editor.putString("pass", pass);
-                    editor.commit();
-
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                     Toast.makeText(RegisterActivity.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
                 }
-                else
-                    Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+                else {
+                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.remove("login");
+                    editor.clear();
+                    editor.commit();
+                }
             }
 
             @Override

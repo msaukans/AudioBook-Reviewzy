@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             try {
 
                 // Enter URL address where your php file resides
-                url = new URL("http://codester.gq/book/login.inc.php");
+                url = new URL("http://codester.gq/book/login.php");
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -194,8 +194,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             if(result.equalsIgnoreCase("true"))
             {
-
-
                 //if log in exists & correct save log in details in sp
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putString("login", login);
