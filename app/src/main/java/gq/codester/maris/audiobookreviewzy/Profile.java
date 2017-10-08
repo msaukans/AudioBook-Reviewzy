@@ -16,7 +16,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sp;
     String fname, sname, email, login, pass, dob, dobd, dobm, doby;
-    Button btn_save;
+    Button btn_save, btn_changePic;
     EditText edEmail,edPass, edLogin, edName, edName2, edDOBD, edDOBM, edDOBY;
     ImageView img_profile;
 
@@ -37,6 +37,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         btn_save = (Button) findViewById(R.id.btn_save);
         //btn_save.setOnClickListener(this);
 
+        btn_changePic = (Button) findViewById(R.id.btn_changePic);
+        //btn_changePic.setOnClickListener(this);
+
         img_profile = (ImageView) findViewById(R.id.img_profile);
         img_profile.setImageResource(R.mipmap.logo1);
 
@@ -55,9 +58,18 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         edName.setText(fname);
         edName2.setText(sname);
 
+        String[] split = dob.split("/");
+        String dobd = split[0];
+        String dobm = split[1];
+        String doby = split[2];
+
+        edDOBD.setText(doby);
+        edDOBM.setText(dobm);
+        edDOBY.setText(dobd);
 
 
-    }
+
+    }//end onCreate()
 
 
     @Override
@@ -66,8 +78,13 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             saveDate();
         }
 
+        if(v == btn_changePic){
+            //TODO create method to pick new picture or capture picture and then upload the new picture
+            //to server
+        }
 
-    }
+
+    }//end onClick()
 
     private void saveDate() {
         email = edEmail.getText().toString().trim();
@@ -101,5 +118,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         editor.putString("sname", sname);
         editor.putString("dob", dob);
         editor.commit();
-    }
+
+        //TODO update values on the server/DB
+
+    }//end saveData()
 }

@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
+    //noinspection GradleDependency
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "gq.codester.maris.audiobookreviewzy"
@@ -25,10 +26,15 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //noinspection GradleDynamicVersion
     compile 'com.android.support:appcompat-v7:26.+'
+    //noinspection GradleDynamicVersion,GradleDynamicVersion
     compile 'com.android.support:design:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //noinspection GradleDynamicVersion
     compile 'com.android.support:support-v4:26.+'
+    //noinspection GradleDynamicVersion
     compile 'com.android.support:support-vector-drawable:26.+'
+    compile 'com.android.volley:volley:1.0.0'
     testCompile 'junit:junit:4.12'
 }

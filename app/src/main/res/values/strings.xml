@@ -95,4 +95,5 @@
     <string name="users_picture">Users picture</string>
     <string name="username">username</string>
     <string name="username2">username2</string>
+    <string name="change_picture">change picture</string>
 </resources>

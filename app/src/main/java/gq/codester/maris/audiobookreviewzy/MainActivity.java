@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,7 +32,27 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+
+@SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         View.OnClickListener {
 
@@ -45,7 +66,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sp;
 
+    String JSON_URL = "http://codester.gq/book/getBook.php";
+
     ListView book_list;
+    List<ABook> bookList = new ArrayList<>();
 
     int[] pic = {
             R.mipmap.logo2,
@@ -54,18 +78,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             R.mipmap.logo2,
             R.mipmap.logo2,
             R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
             R.mipmap.logo2
     };
-
-    String[] name = {
-            "rent",
-            "phone bill",
-            "electricity",
-            "car",
-            "Magazine subscr",
-            "Internet",
-            "water"
-    } ;
 
     String[] author = {
             "500",
@@ -120,22 +141,88 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvUsername2.setText(email);
         tvUsername2.setOnClickListener(this);
 
+       getBooks();
 
-        //Displaying the book list
+        getJSON(JSON_URL);
+        book_list = (ListView)findViewById(R.id.lv);
+
+        /*//Displaying the book list
         final CustomList adapter = new CustomList(MainActivity.this, pic,name, author);
         book_list = (ListView)findViewById(R.id.lv);
-        book_list.setAdapter(adapter);
+        book_list.setAdapter(adapter);*/
 
 
-        book_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {//to edit item in first adapter
+        /*book_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {//to edit item in first adapter
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String value = book_list.getItemAtPosition(position).toString();
                 Toast.makeText(MainActivity.this, "clicked on: " + value, Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
 
+    }
+
+    public void getBooks(){
+
+    }
+
+    private void getJSON(final String urlWebService) {
+
+        class GetJSON extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                try {
+                    loadIntoListView(s);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+        }
+        GetJSON getJSON = new GetJSON();
+        getJSON.execute();
+    }
+
+    private void loadIntoListView(String json) throws JSONException {
+        JSONArray jsonArray = new JSONArray(json);
+        String[] names = new String[jsonArray.length()];
+        String[] bids = new String[jsonArray.length()];
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject obj = jsonArray.getJSONObject(i);
+            names[i] = obj.getString("name");
+        }
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject obj = jsonArray.getJSONObject(i);
+            bids[i] = obj.getString("bid");
+        }
+        final CustomList adapter = new CustomList(MainActivity.this, pic,names, bids);
+        //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, heroes);
+        book_list.setAdapter(adapter);
     }
 
     @Override

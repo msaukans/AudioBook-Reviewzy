@@ -219,13 +219,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void checkUser(){ //check if user's data is saved, if so just log them in and go to main activity
-        Toast.makeText(this, "checking user", Toast.LENGTH_SHORT).show();
-
         sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String l =sp.getString("login",null);
         String p = sp.getString("pass",null);
 
-        //Toast.makeText(this, l + "  " + p, Toast.LENGTH_SHORT).show();
 
         if(!TextUtils.isEmpty(l) && !TextUtils.isEmpty(p)){
             startActivity(new Intent(LoginActivity.this, MainActivity.class));

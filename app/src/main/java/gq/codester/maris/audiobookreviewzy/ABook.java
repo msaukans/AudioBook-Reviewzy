@@ -4,6 +4,7 @@ package gq.codester.maris.audiobookreviewzy;
 
 public class ABook {
 
+    private int bid;
     private String name;
     private String authName;
     private String desc;
@@ -20,6 +21,16 @@ public class ABook {
         this.name = name;
         this.date_of_release = date_of_release;
         this.genre = genre;
+    }
+
+    public ABook(int bid, String name){
+        this.bid = bid;
+        this.name = name;
+    }
+
+    public ABook(String name){
+        this.name = name;
+
     }
 
     public String getName() {

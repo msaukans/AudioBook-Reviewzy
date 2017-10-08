@@ -26,11 +26,21 @@
             android:contentDescription="@string/apps_logo"
             tools:ignore="RtlHardcoded" />
 
+        <Button
+            android:id="@+id/btn_changePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_picture"
+            android:textAllCaps="false"
+            android:layout_below="@id/img_profile"
+            android:layout_alignRight="@id/img_profile"
+            tools:ignore="RtlHardcoded" />
+
         <EditText
             android:id="@+id/edName"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/img_profile"
+            android:layout_below="@id/btn_changePic"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
             android:hint="@string/your_name"
@@ -42,7 +52,7 @@
             android:id="@+id/edName2"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/img_profile"
+            android:layout_below="@id/btn_changePic"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
             android:layout_toRightOf="@id/edName"
