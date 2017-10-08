@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FloatingActionButton fab;
     TextView tvUsername1,tvUsername2;
     EditText edSearch, ed_bname, ed_bauthor, ed_bDesc, ed_relD, ed_relM, ed_relY, ed_genre;
-    String login, pass, username, username2, bName, bAuthor, bDesc, relD, relM, relY, bGenre,rel;
+    String login, email, username, username2, bName, bAuthor, bDesc, relD, relM, relY, bGenre,rel;
     ImageView profilePic;
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sp;
@@ -48,13 +48,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ListView book_list;
 
     int[] pic = {
-            R.mipmap.ic_add,
-            R.mipmap.ic_add,
-            R.mipmap.ic_add,
-            R.mipmap.ic_add,
-            R.mipmap.ic_add,
-            R.mipmap.ic_add,
-            R.mipmap.ic_add
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2,
+            R.mipmap.logo2
     };
 
     String[] name = {
@@ -102,19 +102,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String l =sp.getString("login",null);
+        login =sp.getString("login",null);
+        email =sp.getString("email",null);
 
 
         profilePic = (ImageView) headerView.findViewById(R.id.user_pic);
-        profilePic.setImageResource(R.mipmap.ic_add);
+        profilePic.setImageResource(R.mipmap.logo1);
+        profilePic.setOnClickListener(this);
 
         username = "marsis";
         tvUsername1 = (TextView) headerView.findViewById(R.id.nav_username);
-        tvUsername1.setText(l);
+        tvUsername1.setText(login);
+        tvUsername1.setOnClickListener(this);
 
         username2 = "marsis@maris.uk";
         tvUsername2 = (TextView) headerView.findViewById(R.id.nav_username2);
-        tvUsername2.setText(username2);
+        tvUsername2.setText(email);
+        tvUsername2.setOnClickListener(this);
 
 
         //Displaying the book list
@@ -162,10 +166,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, Settings.class));
         }else if (id == R.id.log_out) {
-            Toast.makeText(this, login + "  " + pass, Toast.LENGTH_SHORT).show();
+
 
             SharedPreferences.Editor editor = sp.edit();
             editor.remove("login");
+            editor.remove("pass");
             editor.clear();
             editor.commit();
 
@@ -180,6 +185,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     public void onClick(View v){
+        if(v == profilePic || v == tvUsername1 || v == tvUsername2){
+            startActivity(new Intent(this, Profile.class));
+        }
+
         if(fab == v){
             {
                 final Dialog dialog = new Dialog(MainActivity.this);

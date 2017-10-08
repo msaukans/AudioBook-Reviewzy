@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,16 +19,17 @@
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        tools:ignore="ObsoleteLayoutParam">
 
         <ImageView
             android:id="@+id/imgRegLogo"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/ic_add"  />
+            android:src="@mipmap/img"
+            android:contentDescription="@string/apps_logo"/>
 
         <TextView
             android:id="@+id/tvReg"
@@ -47,7 +47,7 @@
             android:layout_below="@id/tvReg"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
-            android:hint="Your name"
+            android:hint="@string/your_name"
             android:inputType="text"
             android:padding="10dp"
             />
@@ -60,10 +60,10 @@
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
             android:layout_toRightOf="@id/edName"
-            android:hint="Your Surname"
+            android:hint="@string/your_surname"
             android:inputType="text"
             android:padding="10dp"
-            />
+            tools:ignore="RtlHardcoded" />
 
 
         <EditText
@@ -109,7 +109,7 @@
             android:layout_below="@id/edPass"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
-            android:hint="DD"
+            android:hint="@string/dd"
             android:inputType="date"
             android:padding="10dp"
             android:maxLength="2"
@@ -122,12 +122,12 @@
             android:layout_below="@id/edPass"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
-            android:hint="MM"
+            android:hint="@string/mm"
             android:inputType="date"
             android:padding="10dp"
             android:layout_toRightOf="@id/edDOBD"
             android:maxLength="2"
-            />
+            tools:ignore="RtlHardcoded" />
 
         <EditText
             android:id="@+id/edDOBY"
@@ -136,12 +136,12 @@
             android:layout_below="@id/edPass"
             android:layout_margin="15dp"
             android:background="@drawable/rounded_ed"
-            android:hint="YYYY"
+            android:hint="@string/yyyy"
             android:inputType="date"
             android:padding="10dp"
             android:layout_toRightOf="@id/edDOBM"
             android:maxLength="4"
-            />
+            tools:ignore="RtlHardcoded" />
 
         <Button
             android:id="@+id/registerBtn"
@@ -152,7 +152,7 @@
             android:layout_below="@id/edDOBD"
             android:layout_alignParentRight="true"
             android:textAllCaps="false"
-            />
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/tv1"

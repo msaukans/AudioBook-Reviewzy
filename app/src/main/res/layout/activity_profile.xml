@@ -1,9 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gq.codester.maris.audiobookreviewzy.Profile">
+    tools:context="gq.codester.maris.audiobookreviewzy.Profile"
+    android:background="@color/colorPrimaryDark">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ScrollViewSize">
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="200dp"
+            android:layout_height="160dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="80dp"
+            android:contentDescription="@string/apps_logo"
+            tools:ignore="RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/edName"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_profile"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:hint="@string/your_name"
+            android:inputType="text"
+            android:padding="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edName2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_profile"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:layout_toRightOf="@id/edName"
+            android:hint="@string/your_surname"
+            android:inputType="text"
+            android:padding="10dp"
+            tools:ignore="RtlHardcoded" />
+
+
+        <EditText
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edName"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edEmail"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:hint="@string/login"
+            android:inputType="text"
+            android:padding="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edLogin"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edDOBD"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edPass"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:hint="@string/dd"
+            android:inputType="date"
+            android:padding="10dp"
+            android:maxLength="2"
+            />
+
+        <EditText
+            android:id="@+id/edDOBM"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edPass"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:hint="@string/mm"
+            android:inputType="date"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/edDOBD"
+            android:maxLength="2"
+            tools:ignore="RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/edDOBY"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edPass"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_ed"
+            android:hint="@string/yyyy"
+            android:inputType="date"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/edDOBM"
+            android:maxLength="4"
+            tools:ignore="RtlHardcoded" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:layout_below="@id/edDOBY"
+            android:layout_alignRight="@id/edDOBY"
+            tools:ignore="RtlHardcoded" />
+
+    </RelativeLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

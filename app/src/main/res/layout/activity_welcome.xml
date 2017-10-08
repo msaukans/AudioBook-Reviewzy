@@ -8,15 +8,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="gq.codester.maris.audiobookreviewzy.welcome">
+    tools:context="gq.codester.maris.audiobookreviewzy.welcome"
+    android:background="@color/purple">
 
     <ImageView
         android:id="@+id/img1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_add"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"
+        tools:ignore="RtlHardcoded"
+        android:contentDescription="@string/apps_logo"/>
 
 </RelativeLayout>
