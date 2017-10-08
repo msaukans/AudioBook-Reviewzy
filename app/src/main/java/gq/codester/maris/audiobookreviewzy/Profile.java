@@ -81,6 +81,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         if(v == btn_changePic){
             //TODO create method to pick new picture or capture picture and then upload the new picture
             //to server
+
         }
 
 
